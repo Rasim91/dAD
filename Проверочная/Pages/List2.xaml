@@ -1,0 +1,71 @@
+﻿<Page x:Class="Проверочная.Pages.List2"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Проверочная.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1200"
+      Title="List2">
+
+
+    <Page.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="5 0 0 0"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="FontSize" Value="9"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="ColorOp">
+            <Setter Property="Foreground">
+                <Setter.Value>
+                    <SolidColorBrush Color="Black" Opacity="0.7"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="FontSize" Value="10"/>
+
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="#eeeeee" >
+        <ListView x:Name="EmployeeList" d:ItemsSource="{d:SampleData ItemCount=12}">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Margin="20" HorizontalAlignment="Center" Width="1178" />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border Padding="10" BorderThickness="1" Width="277" Height="173">
+                        <Border.BorderBrush>
+                            <SolidColorBrush Color="Black" Opacity="0.1"/>
+                        </Border.BorderBrush>
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel>
+                                <TextBlock FontWeight="Bold" Text="{Binding StrFullName}"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 20" Orientation="Horizontal">
+                                <Border BorderThickness="0.5" BorderBrush="Black" HorizontalAlignment="Left">
+                                    <Image Source="/Resources/нимок31.jpg" Width="80"/>
+                                </Border>
+                                <StackPanel Margin="10 0 0 0" Orientation="Vertical" Width="162">
+                                    <StackPanel Margin="0 0 0 8" Orientation="Vertical">
+                                        <TextBlock Style="{StaticResource ColorOp}" Text="ADDRESS"/>
+                                        <TextBlock FontSize="9" Text="{Binding StrFullAddress}"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="0 0 0 8" Orientation="Vertical">
+                                        <TextBlock Style="{StaticResource ColorOp}" Text="EMAIL"/>
+                                        <TextBlock FontSize="9" Text="{Binding Email}"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="0 0 0 8" Orientation="Vertical">
+                                        <TextBlock Style="{StaticResource ColorOp}" Text="PHONE"/>
+                                        <TextBlock FontSize="9" Text="{Binding MobilePhone}"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>
